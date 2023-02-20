@@ -55,7 +55,7 @@
             https://www.w3schools.com/bootstrap4/bootstrap_collapse.asp-->
 
             <p>
-                <button class="btn btn-primary btn-block" data-toggle="collapse" href="#collapse" aria-controls="collapse">
+                <button class="btn btn-primary btn-block" data-toggle="collapse" href="#exam" aria-controls="exam">
                     Start Exam
                 </button>
             </p>
@@ -72,11 +72,11 @@
                     <input type="check" name="choice_{{choice.id}}" id="{{choice.id}}" ...>
                     -->
 
-                    <form id="questionform" action="point to a submit view" method="post">
+                    <form id="questionform" action="{% url 'onlinecourse:submit' course.id %}" method="post">
                         <!-- ... for each question in the course ... -->
                         {% for question in course.question_set.all %}
                         <div class="card mt-1">
-                            <div class="card-header"><h5>{{ question.question_text}}</h5></div>
+                            <div class="card-header"><h5>{{ question.text}}</h5></div>
                             {% csrf_token %}
                             <div class="form-group">
                             <!-- ... for each choice in the question ... -->
@@ -85,7 +85,7 @@
                                     <label class="form-check-label">
                                         <input type="checkbox" name="choice_{{choice.id}}"
                                             class="form-check-input" id="{{choice.id}}"
-                                            value="{{choice.id}}">{{ choice.choice_text }}
+                                            value="{{choice.id}}">{{ choice.text }}
                                     </label>
                                 </div>
                                 {% endfor %}

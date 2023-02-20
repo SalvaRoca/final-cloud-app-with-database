@@ -149,7 +149,7 @@ def show_exam_result(request, course_id, submission_id):
 
     grade = 0
 
-    for choice in choices:
+    for choice in choices:      
         if choice.is_correct:
             grade += choice.question.grade
 
